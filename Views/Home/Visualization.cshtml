@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Visualization";
+}
+
+@model IEnumerable<Assignment_4_Cloud_Project.Models.Hospital>
+
+
+<main>
+    <section class="index-banner-4">
+        <div class="vertical-center-4">
+            <div class="section-title-4">Visualizations</div>
+            <div class="section-title-4">These Visualizations show state wise average payment and payment difference.</div>
+        </div>
+
+        <nav id="graph-nav">
+            <ul>
+                <li><a asp-controller="Home" asp-action="StateAveragePayments">State Wise Average Payment</a></li>
+                <li><a asp-controller="Home" asp-action="StatePaymentDifference">State Wise Payment Difference</a></li>
+            </ul>
+        </nav>
+
+        <div class="tables">
+            <h2>@ViewBag.Title</h2>
+            <ul>
+                @foreach (string li in ViewBag.Desc)
+                {
+                    <li>@li</li>
+}
+            </ul>
+            <canvas id="visualization"></canvas>
+            <br />
+            <div class="tables">
+                <table class="tables">
+                    <thead>
+                        <tr>
+                            <th>
+                                Provider State
+                            </th>
+                            <th>
+                                Total Discharges
+                            </th>
+                            <th>
+                                Average Covered Charges
+                            </th>
+                            <th>
+                                Average Total Payments
+                            </th>
+                            <th>
+                                Average Medicare Payments
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.provider_state)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total_discharges)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.average_covered_charges)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.average_medicare_payments)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.average_medicare_payments_2)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
