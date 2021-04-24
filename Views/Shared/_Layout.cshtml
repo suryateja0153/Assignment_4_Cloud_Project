@@ -31,10 +31,10 @@
             <a href=@Url.Action("Index","Home") class="header-brand">Medical Cognizance</a>
             <nav>
                 <ul>
-                    <li>@Html.ActionLink("Intro", "Intro", "Home")</li>
-                    <li>@Html.ActionLink("Data", "Data", "Home")</li>
-                    <li>@Html.ActionLink("Visualization", "Visualization", "Home")</li>
-                    <li>@Html.ActionLink("AboutUs", "AboutUs", "Home")</li>
+                    <li><a asp-controller="Home" asp-action="Intro">Intro</a></li>
+                    <li><a asp-controller="Home" asp-action="Data">Data</a></li>
+                    <li><a asp-controller="Home" asp-action="Visualization">Visualization</a></li>
+                    <li><a asp-controller="Home" asp-action="AboutUs">AboutUs</a></li>
                 </ul>
             </nav>
             <!-- <a href="cases.html" class="header-cases" src="img/git-icon.png"></a> -->

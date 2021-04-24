@@ -29,13 +29,20 @@ namespace Assignment_4_Cloud_Project
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>(options => options.UseSqlServer(
-                //Configuration["Data:MedicalDB:ConnectionString"]));
+            //Configuration["Data:MedicalDB:ConnectionString"]));
             //services.AddMvc();
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("Assignment_4_Cloud_ProjectDBContext")));
+            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=MedicalDB;Trusted_Connection=True;ConnectRetryCount=0";
+
+            services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>
+            (options => options.UseSqlServer(connection));
+
+            //services.AddControllersWithViews();
+
+            //services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("Assignment_4_Cloud_ProjectDBContext")));
 
             //services.AddDbContext<Assignment_4_Cloud_SiteDBContext>(options => options.UseSqlServer(Configuration["Data:Assignment4:ConnectionString"]));
 

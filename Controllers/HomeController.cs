@@ -12,7 +12,7 @@ using Assignment_4_Cloud_Project.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Assignment_4_Cloud_Project.APIManager;
 
-namespace Assignment_4_Cloud_Site.Controllers
+namespace Assignment_4_Cloud_Project.Controllers
 {
     public class HomeController : Controller
     {
@@ -46,9 +46,9 @@ namespace Assignment_4_Cloud_Site.Controllers
         public async Task<ViewResult> Update()
         {
             APIHandler webHandler = new APIHandler();
-            MedicalData outVal = webHandler.GetMedDetails();
+            MedicalData result = webHandler.GetMedDetails();
 
-            foreach (var item in outVal.data)
+            foreach (var item in result.data)
             {
                 if (dbContext.Hospitals.Count() == 0)
                 {
@@ -57,26 +57,26 @@ namespace Assignment_4_Cloud_Site.Controllers
             }
             foreach (var item in dbContext.Hospitals)
             {
-                Supplier provider = new Supplier();
-                Locale location = new Locale();
-                provider.provider_id = item.provider_id;
-                provider.provider_name = item.provider_name;
-                provider.provider_street_address = item.provider_street_address;
-                provider.provider_zip_code = item.provider_zip_code;
-                provider.total_discharges = item.total_discharges;
-                provider.drg_definition = item.drg_definition;
-                provider.average_covered_charges = item.average_covered_charges;
-                provider.average_medicare_payments = item.average_medicare_payments;
-                provider.average_medicare_payments_2 = item.average_medicare_payments_2;
-                location.provider_city = item.provider_city;
-                location.provider_state = item.provider_state;
-                location.hospital_referral_region_description = item.hospital_referral_region_description;
-                dbContext.Locales.Add(location);
-                provider.Locale = location;
-                dbContext.Suppliers.Add(provider);
+                Supplier supplier = new Supplier();
+                Locale locale = new Locale();
+                supplier.provider_id = item.provider_id;
+                supplier.provider_name = item.provider_name;
+                supplier.provider_street_address = item.provider_street_address;
+                supplier.provider_zip_code = item.provider_zip_code;
+                supplier.total_discharges = item.total_discharges;
+                supplier.drg_definition = item.drg_definition;
+                supplier.average_covered_charges = item.average_covered_charges;
+                supplier.average_medicare_payments = item.average_medicare_payments;
+                supplier.average_medicare_payments_2 = item.average_medicare_payments_2;
+                locale.provider_city = item.provider_city;
+                locale.provider_state = item.provider_state;
+                locale.hospital_referral_region_description = item.hospital_referral_region_description;
+                dbContext.Locales.Add(locale);
+                supplier.Locale = locale;
+                dbContext.Suppliers.Add(supplier);
             }
             await dbContext.SaveChangesAsync();
-            return View("Index", outVal);
+            return View("Index", result);
         }
 
         //Read
@@ -154,8 +154,8 @@ namespace Assignment_4_Cloud_Site.Controllers
             return View();
         }
 
-        List<Supplier> providers = new List<Supplier>();
-        List<Locale> locations = new List<Locale>();
+        List<Supplier> suppliers = new List<Supplier>();
+        List<Locale> locales = new List<Locale>();
 
         public IActionResult Visualization()
         {
