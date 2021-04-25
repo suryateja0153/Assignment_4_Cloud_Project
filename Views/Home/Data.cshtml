@@ -3,7 +3,7 @@
     ViewData["Title"] = "Data";
 }
 
-@model IEnumerable<Assignment_4_Cloud_Project.Models.Supplier>
+@model IEnumerable<Assignment_4_Cloud_Project.Models.MedicalData>
 
 <main>
     <section class="index-banner-4">
@@ -32,7 +32,7 @@
                     <p>Average Covered Charges: The provider's average charge for services covered by Medicare for all discharges in the MS-DRG. </p>
                     <p>Average Total Payments: The average total payments to all providers for the MS-DRG including the MSDRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Also included in average total payments are co-payment and deductible amounts that the patient is responsible for and any additional payments by third parties for coordination of benefits. </p>
                     <p>Average Medicare Payments: The average amount that Medicare pays to the provider for Medicare's share of the MS-DRG.</p>
-                    @using (Html.BeginForm())
+                    @*@using (Html.BeginForm())
                     {
                         <div class="search">
                             Search by Provider State: @Html.TextBox("searchProvState")
@@ -124,7 +124,7 @@
                                     </td>
                                 </tr>}
                         </tbody>
-                    </table>
+                    </table>*@
 
                 </div>
             </div>

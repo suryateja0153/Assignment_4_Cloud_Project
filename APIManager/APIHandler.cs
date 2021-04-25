@@ -17,15 +17,19 @@ namespace Assignment_4_Cloud_Project.APIManager
     {
         HttpClient httpClient;
 
-        //static string BASE_URL = "https://data.cms.gov/resource/97k6-zzx3.json";
-        //static string API_KEY = "ccaaGn94vH85g31bEwmX61RgRgmNLztKoV84Xayd";
+        static string BASE_URL = "https://data.cms.gov/resource/97k6-zzx3.json";
+        static string API_KEY = "15wcksihd8ny04c25ehgrwbxtz6afvgcvbhejkk9yfqs2sa07u";
 
-        static string BASE_URL = "https://api.nal.usda.gov/fdc/v1/";
-        static string API_KEY = "LyYNnCXC8gYruaksP3U6LKvFbmT7KmYAgwOIJUXB";
+        //static string BASE_URL = "https://api.nal.usda.gov/fdc/v1/";
+        //static string API_KEY = "LyYNnCXC8gYruaksP3U6LKvFbmT7KmYAgwOIJUXB";
 
-        public MedicalData GetMedDetails()
+        //public Dictionary<string, string> GetMedDetails()
+        public List<MedicalData> GetMedDetails()
         {
-            string API_PATH = BASE_URL + "foods/list";
+            //MedicalData obj = new MedicalData();
+            //Dictionary<string, string> medList = new Dictionary<string, string>();
+
+            string API_PATH = BASE_URL;
 
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
@@ -36,7 +40,7 @@ namespace Assignment_4_Cloud_Project.APIManager
             string medData = "";
             //string finalJson = "";
 
-            MedicalData result = null;
+            List<MedicalData> result = null;
 
             //httpClient.BaseAddress = new Uri(API_PATH);
 
@@ -57,23 +61,49 @@ namespace Assignment_4_Cloud_Project.APIManager
                 //string food1 = Regex.Unescape(medData);
                 //medData = medData.Replace(@"\\", @"""");
 
+                //JArray parsedResponse = JArray.Parse(medData);
+
                 if (!medData.Equals(""))
                 {
-                    // JsonConvert is part of the NewtonSoft.Json Nuget package
+                    //JObject parsedResponse = JObject.Parse(medData);
+                    //JsonConvert is part of the NewtonSoft.Json Nuget package
                     //finalJson = "{\"data\":" + medData + "}";
-                    //result = JsonConvert.DeserializeObject<MedicalData>(medData);
+                    //result = JsonConvert.DeserializeObject<MedicalData>(parsedResponse);
 
-                    JObject parsedResponse = JObject.Parse(medData);
-                    JArray parks = (JArray)parsedResponse["data"];
+                    //JObject jObject = JObject.Parse(medData);
+
+                    result = JsonConvert.DeserializeObject<List<MedicalData>>(medData);
+
+
+                    //JArray parks = (JArray)parsedResponse["data"];
 
                 }
+
+
+
+                //if (!medData.Equals(""))
+                //{
+                //    JArray parsedResponse = JArray.Parse(medData);
+                //    foreach (JObject o in parsedResponse.Children<JObject>())
+                //    {
+                //        foreach (JProperty p in o.Properties())
+                //        {
+                //            medList.Add(p.Name, (string)p.Value);
+
+                //        }
+                //    }
+                //}
+
+
             }
+
             catch (Exception e)
             {
-                // This is a useful place to insert a breakpoint and observe the error message
+                //This is a useful place to insert a breakpoint and observe the error message
                 Console.WriteLine(e.Message);
             }
 
+            //return medList;
             return result;
         }
     }

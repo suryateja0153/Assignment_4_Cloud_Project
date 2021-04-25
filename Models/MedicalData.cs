@@ -8,11 +8,11 @@ using Assignment_4_Cloud_Project.Controllers;
 
 namespace Assignment_4_Cloud_Project.Models
 {
+    //public class MedData
+    //{
+    //    public MedicalData data { get; set; }
+    //}
     public class MedicalData
-    {
-        public List<Hospital> data { get; set; }
-    }
-    public class Hospital
     {
         [Key]
         public string provider_id { get; set; }

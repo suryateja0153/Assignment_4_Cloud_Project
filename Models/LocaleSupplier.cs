@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assignment_4_Cloud_Project.Models
 {
@@ -13,13 +14,17 @@ namespace Assignment_4_Cloud_Project.Models
         public string provider_city { get; set; }
         public string provider_state { get; set; }
         public string hospital_referral_region_description { get; set; }
+
+        //[ForeignKey("Supplier")]
+        public string provider_id { get; set; }
+        //public virtual Supplier Supplier { get; set; }
         public List<Supplier> Supplier { get; set; }
     }
 
     public class Supplier
     {
         [Key]
-        public int id { get; set; }
+        //public int id { get; set; }
         public string provider_id { get; set; }
         public string provider_name { get; set; }
         public string provider_street_address { get; set; }

@@ -16,7 +16,7 @@ namespace Assignment_4_Cloud_Project.DataAccess
         {
         }
 
-        public DbSet<Hospital> Hospitals { get; set; }
+        public DbSet<MedicalData> MedicalDatas { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Locale> Locales { get; set; }
     }
