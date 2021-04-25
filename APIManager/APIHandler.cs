@@ -8,6 +8,8 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json.Linq;
 
 namespace Assignment_4_Cloud_Project.APIManager
 {
@@ -28,7 +30,7 @@ namespace Assignment_4_Cloud_Project.APIManager
 
             string API_PATH = BASE_URL;
             string medData = "";
-            //string finalJson = "";
+            string finalJson = "";
 
             MedicalData result = null;
 
@@ -43,10 +45,18 @@ namespace Assignment_4_Cloud_Project.APIManager
                     medData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
                 }
 
-                //if (!medData.Equals(""))
+                //string pattern = @":\";
+                //medData = Regex.Replace(medData, pattern, string.Empty);
+
+                //string food1 = JsonConvert.DeserializeObject<string>(foodData);
+                //medData = Regex.Replace(medData, @"\\", "");
+                //string food1 = Regex.Unescape(medData);
+                medData = medData.Replace(@"\\", @"""");
+
+                if (!medData.Equals(""))
                 {
                     // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    //finalJson = "{\"data\":" + medData + "}";
+                    finalJson = "{\"data\":" + medData + "}";
                     result = JsonConvert.DeserializeObject<MedicalData>(medData);
                 }
             }
