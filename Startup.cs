@@ -34,7 +34,7 @@ namespace Assignment_4_Cloud_Project
 
             services.AddControllersWithViews();
 
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=MDCL;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=Medical;Trusted_Connection=True;ConnectRetryCount=0";
 
             services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>
             (options => options.UseSqlServer(connection));

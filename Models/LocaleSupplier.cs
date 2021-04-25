@@ -16,7 +16,7 @@ namespace Assignment_4_Cloud_Project.Models
         public string hospital_referral_region_description { get; set; }
 
         //[ForeignKey("Supplier")]
-        public string provider_id { get; set; }
+        //public string provider_id { get; set; }
         //public virtual Supplier Supplier { get; set; }
         public List<Supplier> Supplier { get; set; }
     }

@@ -9,65 +9,65 @@
 <h4>Supplier</h4>
 <hr />
 
-<main>
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="UpdateEntry">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="provider_id" />
-                <div class="form-group">
-                    <label asp-for="provider_name" class="control-label">provider_name</label>
-                    <input asp-for="provider_name" class="form-control" />
-                    <span asp-validation-for="provider_name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="provider_street_address" class="control-label">provider_street_address</label>
-                    <input asp-for="provider_street_address" class="form-control" />
-                    <span asp-validation-for="provider_street_address" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="provider_zip_code" class="control-label">provider_zip_code</label>
-                    <input asp-for="provider_zip_code" class="form-control" />
-                    <span asp-validation-for="provider_zip_code" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="total_discharges" class="control-label"></label>
-                    <input asp-for="total_discharges" class="form-control" />
-                    <span asp-validation-for="total_discharges" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="drg_definition" class="control-label"></label>
-                    <input asp-for="drg_definition" class="form-control" />
-                    <span asp-validation-for="drg_definition" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="average_covered_charges" class="control-label"></label>
-                    <input asp-for="average_covered_charges" class="form-control" />
-                    <span asp-validation-for="average_covered_charges" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="average_medicare_payments" class="control-label"></label>
-                    <input asp-for="average_medicare_payments" class="form-control" />
-                    <span asp-validation-for="average_medicare_payments" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="average_medicare_payments_2" class="control-label"></label>
-                    <input asp-for="average_medicare_payments_2" class="form-control" />
-                    <span asp-validation-for="average_medicare_payments_2" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
-    </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="UpdateEntry">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="provider_id" />
+            <div class="form-group">
+                <label asp-for="provider_name" class="control-label">provider_name</label>
+                <input asp-for="provider_name" class="form-control" />
+                <span asp-validation-for="provider_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="provider_street_address" class="control-label">provider_street_address</label>
+                <input asp-for="provider_street_address" class="form-control" />
+                <span asp-validation-for="provider_street_address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="provider_zip_code" class="control-label">provider_zip_code</label>
+                <input asp-for="provider_zip_code" class="form-control" />
+                <span asp-validation-for="provider_zip_code" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="total_discharges" class="control-label"></label>
+                <input asp-for="total_discharges" class="form-control" />
+                <span asp-validation-for="total_discharges" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="drg_definition" class="control-label"></label>
+                <input asp-for="drg_definition" class="form-control" />
+                <span asp-validation-for="drg_definition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="average_covered_charges" class="control-label"></label>
+                <input asp-for="average_covered_charges" class="form-control" />
+                <span asp-validation-for="average_covered_charges" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="average_medicare_payments" class="control-label"></label>
+                <input asp-for="average_medicare_payments" class="form-control" />
+                <span asp-validation-for="average_medicare_payments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="average_medicare_payments_2" class="control-label"></label>
+                <input asp-for="average_medicare_payments_2" class="form-control" />
+                <span asp-validation-for="average_medicare_payments_2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
-</main>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
 

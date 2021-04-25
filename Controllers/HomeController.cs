@@ -62,9 +62,9 @@ namespace Assignment_4_Cloud_Project.Controllers
         //    return View();
         //}
 
-        public IActionResult UpdateEntry(int id)
+        public IActionResult UpdateEntry()
         {
-            return View("EditData");
+            return View();
         }
         public async Task<ViewResult> Update()
         {
@@ -89,7 +89,7 @@ namespace Assignment_4_Cloud_Project.Controllers
                 obj1.provider_city = value.provider_city;
                 obj1.provider_state = value.provider_state;
                 obj1.hospital_referral_region_description = value.hospital_referral_region_description;
-                obj1.provider_id = value.provider_id;
+                //obj1.provider_id = value.provider_id;
 
                 dbContext.Add(obj);
                 dbContext.Add(obj1);
