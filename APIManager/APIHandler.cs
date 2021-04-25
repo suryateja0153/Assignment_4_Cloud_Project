@@ -17,24 +17,28 @@ namespace Assignment_4_Cloud_Project.APIManager
     {
         HttpClient httpClient;
 
-        static string BASE_URL = "https://data.cms.gov/resource/97k6-zzx3.json";
-        static string API_KEY = "ccaaGn94vH85g31bEwmX61RgRgmNLztKoV84Xayd";
+        //static string BASE_URL = "https://data.cms.gov/resource/97k6-zzx3.json";
+        //static string API_KEY = "ccaaGn94vH85g31bEwmX61RgRgmNLztKoV84Xayd";
+
+        static string BASE_URL = "https://api.nal.usda.gov/fdc/v1/";
+        static string API_KEY = "LyYNnCXC8gYruaksP3U6LKvFbmT7KmYAgwOIJUXB";
 
         public MedicalData GetMedDetails()
         {
+            string API_PATH = BASE_URL + "foods/list";
+
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
-            httpClient.DefaultRequestHeaders.Accept.Add(
-                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.BaseAddress = new Uri(API_PATH);
 
-            string API_PATH = BASE_URL;
             string medData = "";
-            string finalJson = "";
+            //string finalJson = "";
 
             MedicalData result = null;
 
-            httpClient.BaseAddress = new Uri(API_PATH);
+            //httpClient.BaseAddress = new Uri(API_PATH);
 
             try
             {
@@ -51,13 +55,17 @@ namespace Assignment_4_Cloud_Project.APIManager
                 //string food1 = JsonConvert.DeserializeObject<string>(foodData);
                 //medData = Regex.Replace(medData, @"\\", "");
                 //string food1 = Regex.Unescape(medData);
-                medData = medData.Replace(@"\\", @"""");
+                //medData = medData.Replace(@"\\", @"""");
 
                 if (!medData.Equals(""))
                 {
                     // JsonConvert is part of the NewtonSoft.Json Nuget package
-                    finalJson = "{\"data\":" + medData + "}";
-                    result = JsonConvert.DeserializeObject<MedicalData>(medData);
+                    //finalJson = "{\"data\":" + medData + "}";
+                    //result = JsonConvert.DeserializeObject<MedicalData>(medData);
+
+                    JObject parsedResponse = JObject.Parse(medData);
+                    JArray parks = (JArray)parsedResponse["data"];
+
                 }
             }
             catch (Exception e)
