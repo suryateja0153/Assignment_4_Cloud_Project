@@ -3,19 +3,19 @@
     ViewData["Title"] = "Data";
 }
 
-@model IEnumerable<Assignment_4_Cloud_Project.Models.MedicalData>
+@model IEnumerable<Assignment_4_Cloud_Project.Models.Supplier>
 
 <main>
     <section class="index-banner-4">
         <div class="vertical-center-4">
-            <div class="section-title-4">Tables</div>
+            @*<div class="section-title-4">Tables</div>*@
+            <h4>Tables</h4>
             <div id="content-4">
                 <h3 class="section-title-4">Here, you can manipulate the data by adding, deleting and editing the entries which will be stored in a database.</h3>
                 <div>
-                    <p>
-                        Search by State or Provider’s by Provider City.
-                    </p>
-                    <div class="section-title-4">Variables</div>
+                    <br />
+                    @*<div class="section-title-4">Variables</div>*@
+                    <h4>Variables</h4><br />
                     <p>
                         DRG Definition: The code and description identifying the MS-DRG. MS-DRGs are a classification system that groups similar clinical conditions (diagnoses) and the procedures furnished by the hospital during the stay.
                     </p>
@@ -32,100 +32,46 @@
                     <p>Average Covered Charges: The provider's average charge for services covered by Medicare for all discharges in the MS-DRG. </p>
                     <p>Average Total Payments: The average total payments to all providers for the MS-DRG including the MSDRG amount, teaching, disproportionate share, capital, and outlier payments for all cases. Also included in average total payments are co-payment and deductible amounts that the patient is responsible for and any additional payments by third parties for coordination of benefits. </p>
                     <p>Average Medicare Payments: The average amount that Medicare pays to the provider for Medicare's share of the MS-DRG.</p>
-                    @*@using (Html.BeginForm())
-                    {
-                        <div class="search">
-                            Search by Provider State: @Html.TextBox("searchProvState")
-                            <input type="submit" value="Search" />
-                        </div>
-                        <div class="search">
-                            Search by Provider City: @Html.TextBox("searchProvCity")
-                            <input type="submit" value="Search" />
-                        </div><br />
-                        <div class="search">
-                            Sort by clicking on column name
-                        </div>
-                    }
 
                     <table class="tables">
-                        <thead>
+                        <tr>
+                            <th>
+                                Provider Name
+                            </th>
+                            <th>
+                                DRG Definition
+                            </th>
+                            <th>
+                                Provider Street Address
+                            </th>
+                            <th>
+                                Average Covered Charges
+                            </th>
+                            <th>
+                                Average Medicare Payments
+                            </th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
                             <tr>
-                                <th>
-                                    DRG Definition
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Provider Name", "Data", new { sortOrder = ViewBag.NameSortParam })
-                                </th>
-                                <th>
-                                    Provider Street Address
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Provider City", "Data", new { sortOrder = ViewBag.CitySortParam })
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Provider State", "Data", new { sortOrder = ViewBag.StateSortParam })
-                                </th>
-                                <th>
-                                    Provider ZipCode
-                                </th>
-                                <th>
-                                    Hospital Referral Region Description
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Total Discharges", "Data", new { sortOrder = ViewBag.DischargesSortParam })
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Average Covered Charges", "Data", new { sortOrder = ViewBag.CovChargesSortParam })
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Average Total Payments", "Data", new { sortOrder = ViewBag.TotalPmtsSortParam })
-                                </th>
-                                <th>
-                                    @Html.ActionLink("Average Medicare Payments", "Data", new { sortOrder = ViewBag.MedicSortParam })
-                                </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.provider_name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.drg_definition)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.provider_street_address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.average_covered_charges)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.average_medicare_payments)
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.drg_definition)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.provider_name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.provider_street_address)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Locale.provider_city)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Locale.provider_state)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.provider_zip_code)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Locale.hospital_referral_region_description)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.total_discharges)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.average_covered_charges)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.average_medicare_payments)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.average_medicare_payments_2)
-                                    </td>
-                                </tr>}
-                        </tbody>
-                    </table>*@
-
+                        }
+                    </table>
                 </div>
             </div>
         </div>

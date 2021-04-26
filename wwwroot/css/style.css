@@ -113,7 +113,7 @@ Author: Suryateja Chalapati
 
 main {
     padding-top: 100px;
-    padding-bottom: 200px;
+    padding-bottom: 300px;
 }
 
 .main-header {
@@ -392,7 +392,7 @@ header a:hover {
     height: calc(100vh - 100px);
     margin-left: 40px;
     padding-top: 30px;
-    padding-bottom: 70px;
+    padding-bottom: 100px;
     text-align: left;
     font-size: 18px;
     font-weight: 400;

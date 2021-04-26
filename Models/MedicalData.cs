@@ -10,7 +10,7 @@ namespace Assignment_4_Cloud_Project.Models
 {
     //public class HospitalData
     //{
-    //    public MedicalData data { get; set; }
+    //    public List<MedicalData> data { get; set; }
     //}
     public class MedicalData
     {

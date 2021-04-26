@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionString/Assignment_4_Cloud_ProjectDBContext",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

@@ -1,84 +1,79 @@
-﻿@model Assignment_4_Cloud_Project.Models.MedicalData
+﻿@model Assignment_4_Cloud_Project.Models.Supplier
 
 @{
     ViewData["Title"] = "EditData";
 }
 
-<h1>EditData</h1>
+<main>
+    <section class="index-banner-2">
+        <div class="vertical-center-2">
 
-<h4>MedicalData</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="EditData">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="provider_id" />
-            <div class="form-group">
-                <label asp-for="drg_definition" class="control-label"></label>
-                <input asp-for="drg_definition" class="form-control" />
-                <span asp-validation-for="drg_definition" class="text-danger"></span>
+            <h4>MedicalData</h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="EditData">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="provider_id" />
+                        <div class="form-group">
+                            <label asp-for="drg_definition" class="control-label"></label>
+                            <input asp-for="drg_definition" class="form-control" />
+                            <span asp-validation-for="drg_definition" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="provider_name" class="control-label"></label>
+                            <input asp-for="provider_name" class="form-control" />
+                            <span asp-validation-for="provider_name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="provider_street_address" class="control-label"></label>
+                            <input asp-for="provider_street_address" class="form-control" />
+                            <span asp-validation-for="provider_street_address" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="provider_zip_code" class="control-label"></label>
+                            <input asp-for="provider_zip_code" class="form-control" />
+                            <span asp-validation-for="provider_zip_code" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="total_discharges" class="control-label"></label>
+                            <input asp-for="total_discharges" class="form-control" />
+                            <span asp-validation-for="total_discharges" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="average_covered_charges" class="control-label"></label>
+                            <input asp-for="average_covered_charges" class="form-control" />
+                            <span asp-validation-for="average_covered_charges" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="average_medicare_payments" class="control-label"></label>
+                            <input asp-for="average_medicare_payments" class="form-control" />
+                            <span asp-validation-for="average_medicare_payments" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="average_medicare_payments_2" class="control-label"></label>
+                            <input asp-for="average_medicare_payments_2" class="form-control" />
+                            <span asp-validation-for="average_medicare_payments_2" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="provider_name" class="control-label"></label>
-                <input asp-for="provider_name" class="form-control" />
-                <span asp-validation-for="provider_name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="provider_street_address" class="control-label"></label>
-                <input asp-for="provider_street_address" class="form-control" />
-                <span asp-validation-for="provider_street_address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="provider_city" class="control-label"></label>
-                <input asp-for="provider_city" class="form-control" />
-                <span asp-validation-for="provider_city" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="provider_state" class="control-label"></label>
-                <input asp-for="provider_state" class="form-control" />
-                <span asp-validation-for="provider_state" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="provider_zip_code" class="control-label"></label>
-                <input asp-for="provider_zip_code" class="form-control" />
-                <span asp-validation-for="provider_zip_code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="hospital_referral_region_description" class="control-label"></label>
-                <input asp-for="hospital_referral_region_description" class="form-control" />
-                <span asp-validation-for="hospital_referral_region_description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="total_discharges" class="control-label"></label>
-                <input asp-for="total_discharges" class="form-control" />
-                <span asp-validation-for="total_discharges" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="average_covered_charges" class="control-label"></label>
-                <input asp-for="average_covered_charges" class="form-control" />
-                <span asp-validation-for="average_covered_charges" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="average_medicare_payments" class="control-label"></label>
-                <input asp-for="average_medicare_payments" class="form-control" />
-                <span asp-validation-for="average_medicare_payments" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="average_medicare_payments_2" class="control-label"></label>
-                <input asp-for="average_medicare_payments_2" class="form-control" />
-                <span asp-validation-for="average_medicare_payments_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+            <div>
+                <a asp-action="Data">Back to List</a>
+            </div>
+        </div>
+    </section>
+    @*@section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }*@
+</main>
+<br />
+<br />
+<br />
+<br />
+<br />
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
