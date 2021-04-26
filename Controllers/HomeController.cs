@@ -48,23 +48,28 @@ namespace Assignment_4_Cloud_Project.Controllers
         }
         public IActionResult Data()
         {
-            //List<Supplier> tab = dbContext.Suppliers.AsEnumerable()
+            List<Supplier> tab = dbContext.Suppliers.Take(10).ToList();
+
             //.Select(t => new Supplier
             //{
-            //    provider_name = ["provider_name"],
-            //    drg_definition = ["drg_definition"],
-            //    provider_street_address = ["provider_street_address"],
-            //    average_covered_charges = ["average_covered_charges"],
-            //    average_medicare_payments = ["average_medicare_payments"]
+            //    provider_name = t.provider_name,
+            //    drg_definition = t.drg_definition,
+            //    provider_street_address = t.provider_street_address,
+            //    average_covered_charges = t.average_covered_charges,
+            //    average_medicare_payments = t.average_medicare_payments
             //})
-            //.ToList();
+            //.Take(10).ToList();
 
-            return View("Data");
+            //var table = dbContext.Suppliers.Where(u => u.id == id).Take(10);
+
+            return View(tab);
         }
-        public IActionResult Visualization()
-        {
-            return View();
-        }
+        //public IActionResult Visualization()
+        //{
+        //    List<Supplier> vis = dbContext.Suppliers.ToList();
+
+        //    return View(vis);
+        //}
 
         //public IActionResult Update()
         //{
@@ -231,27 +236,34 @@ namespace Assignment_4_Cloud_Project.Controllers
         //List<Supplier> suppliers = new List<Supplier>();
         //List<Locale> locales = new List<Locale>();
 
+        public IActionResult Visualization()
+        {
+            List<Supplier> vis = dbContext.Suppliers.Take(10).ToList();
+
+            return View(vis);
+        }
+
         //public IActionResult Visualization()
         //{
-        //    IQueryable<Hospital> Hosp = dbContext.Hospitals
-        //                             .GroupBy(h => h.provider_state)
-        //                             .Select(cl => new Hospital
+        //    IQueryable<Supplier> sup = dbContext.Suppliers
+        //                             .GroupBy(h => h.provider_name)
+        //                             .Select(cl => new Supplier
         //                             {
-        //                                 provider_state = cl.Key,
+        //                                 provider_name = cl.Key,
         //                                 total_discharges = cl.Sum(c => c.total_discharges),
         //                                 average_medicare_payments = cl.Average(c => c.average_medicare_payments),
         //                                 average_medicare_payments_2 = cl.Average(c => c.average_medicare_payments_2),
         //                                 average_covered_charges = cl.Average(c => c.average_covered_charges)
         //                             })
-        //                             .OrderBy(h => h.provider_state);
+        //                             .OrderBy(h => h.provider_name);
 
         //    List<string> State = new List<string>();
-        //    foreach (var item in Hosp)
+        //    foreach (var item in sup)
         //    {
-        //        State.Add(item.provider_state);
+        //        State.Add(item.provider_name);
         //    }
         //    List<int> TotalDischarges = new List<int>();
-        //    foreach (var item in Hosp)
+        //    foreach (var item in sup)
         //    {
         //        TotalDischarges.Add(item.total_discharges);
         //    }
@@ -261,76 +273,76 @@ namespace Assignment_4_Cloud_Project.Controllers
         //    ViewBag.Labels = String.Join(",", State.Select(d => "\"" + d + "\""));
         //    ViewBag.Label = "Total Discharges";
 
-        //    return View("Visualization", Hosp);
+        //    return View("Visualization", sup);
         //}
 
-        public IActionResult StateAveragePayments()
-        {
-            IQueryable<Supplier> Hosp = dbContext.Suppliers
-                                                 .GroupBy(h => h.provider_name)
-                                                 .Select(cl => new Supplier
-                                                 {
-                                                     provider_name = cl.Key,
-                                                     total_discharges = cl.Sum(c => c.total_discharges),
-                                                     average_medicare_payments = cl.Average(c => c.average_medicare_payments),
-                                                     average_medicare_payments_2 = cl.Average(c => c.average_medicare_payments_2),
-                                                     average_covered_charges = cl.Average(c => c.average_covered_charges)
-                                                 })
-                                                 .OrderBy(h => h.provider_name);
+        //public IActionResult StateAveragePayments()
+        //{
+        //    IQueryable<Supplier> s1 = dbContext.Suppliers
+        //                                         .GroupBy(h => h.provider_name)
+        //                                         .Select(cl => new Supplier
+        //                                         {
+        //                                             provider_name = cl.Key,
+        //                                             total_discharges = cl.Sum(c => c.total_discharges),
+        //                                             average_medicare_payments = cl.Average(c => c.average_medicare_payments),
+        //                                             average_medicare_payments_2 = cl.Average(c => c.average_medicare_payments_2),
+        //                                             average_covered_charges = cl.Average(c => c.average_covered_charges)
+        //                                         })
+        //                                         .OrderBy(h => h.provider_name);
 
-            List<string> State = new List<string>();
-            foreach (var item in Hosp)
-            {
-                State.Add(item.provider_name);
-            }
-            List<float> TotalPayments = new List<float>();
-            foreach (var item in Hosp)
-            {
-                TotalPayments.Add(item.average_medicare_payments);
-            }
+        //    List<string> State = new List<string>();
+        //    foreach (var item in s1)
+        //    {
+        //        State.Add(item.provider_name);
+        //    }
+        //    List<float> TotalPayments = new List<float>();
+        //    foreach (var item in s1)
+        //    {
+        //        TotalPayments.Add(item.average_medicare_payments);
+        //    }
 
-            ViewBag.Title = "Average Total Payments by State";
-            ViewBag.Desc = new List<string> { "How do states differ in their average charges for a DRG? Here is the information with the most expensive states coming first:", "The State of Hawaii has the highest average total payment of: $156,158", "The State of Alabama has the lowest average total payment of:  $2,673", "Average Total of Payment by State is $9,707" };
-            ViewBag.Data = String.Join(",", TotalPayments.Select(d => d));
-            ViewBag.Labels = String.Join(",", State.Select(d => "\"" + d + "\""));
-            ViewBag.Label = "Average Payments";
+        //    ViewBag.Title = "Average Total Payments by State";
+        //    ViewBag.Desc = new List<string> { "How do states differ in their average charges for a DRG? Here is the information with the most expensive states coming first:", "The State of Hawaii has the highest average total payment of: $156,158", "The State of Alabama has the lowest average total payment of:  $2,673", "Average Total of Payment by State is $9,707" };
+        //    ViewBag.Data = String.Join(",", TotalPayments.Select(d => d));
+        //    ViewBag.Labels = String.Join(",", State.Select(d => "\"" + d + "\""));
+        //    ViewBag.Label = "Average Payments";
 
-            return View("Visualization", Hosp);
-        }
+        //    return View("Visualization", s1);
+        //}
 
-        public IActionResult StatePaymentDifference()
-        {
-            IQueryable<Supplier> Hosp = dbContext.Suppliers
-                                                 .GroupBy(h => h.provider_name)
-                                                 .Select(cl => new Supplier
-                                                 {
-                                                     provider_name = cl.Key,
-                                                     total_discharges = cl.Sum(c => c.total_discharges),
-                                                     average_medicare_payments = cl.Max(c => c.average_medicare_payments) - cl.Min(c => c.average_medicare_payments),
-                                                     average_medicare_payments_2 = cl.Max(c => c.average_medicare_payments_2) - cl.Min(c => c.average_medicare_payments_2),
-                                                     average_covered_charges = cl.Max(c => c.average_covered_charges) - cl.Min(c => c.average_covered_charges)
-                                                 })
-                                                 .OrderBy(h => h.provider_name);
+        //public IActionResult StatePaymentDifference()
+        //{
+        //    IQueryable<Supplier> s2 = dbContext.Suppliers
+        //                                         .GroupBy(h => h.provider_name)
+        //                                         .Select(cl => new Supplier
+        //                                         {
+        //                                             provider_name = cl.Key,
+        //                                             total_discharges = cl.Sum(c => c.total_discharges),
+        //                                             average_medicare_payments = cl.Max(c => c.average_medicare_payments) - cl.Min(c => c.average_medicare_payments),
+        //                                             average_medicare_payments_2 = cl.Max(c => c.average_medicare_payments_2) - cl.Min(c => c.average_medicare_payments_2),
+        //                                             average_covered_charges = cl.Max(c => c.average_covered_charges) - cl.Min(c => c.average_covered_charges)
+        //                                         })
+        //                                         .OrderBy(h => h.provider_name);
 
-            List<string> State = new List<string>();
-            foreach (var item in Hosp)
-            {
-                State.Add(item.provider_name);
-            }
-            List<float> PaymentDifference = new List<float>();
-            foreach (var item in Hosp)
-            {
-                PaymentDifference.Add(item.average_medicare_payments);
-            }
+        //    List<string> State = new List<string>();
+        //    foreach (var item in s2)
+        //    {
+        //        State.Add(item.provider_name);
+        //    }
+        //    List<float> PaymentDifference = new List<float>();
+        //    foreach (var item in s2)
+        //    {
+        //        PaymentDifference.Add(item.average_medicare_payments);
+        //    }
 
-            ViewBag.Title = "Difference in Average Total Payments by State";
-            ViewBag.Desc = new List<string> { "How about the difference between the highest and the lowest charges in the same state? Here is the breakdown of locations with the largest difference, which can help find more affordable options in a region.", "The State of Illinois has the highest difference in total payments", "he State of Hawaii has the lowest difference in total payments" };
-            ViewBag.Data = String.Join(",", PaymentDifference.Select(d => d));
-            ViewBag.Labels = String.Join(",", State.Select(d => "\"" + d + "\""));
-            ViewBag.Label = "Average Payments";
+        //    ViewBag.Title = "Difference in Average Total Payments by State";
+        //    ViewBag.Desc = new List<string> { "How about the difference between the highest and the lowest charges in the same state? Here is the breakdown of locations with the largest difference, which can help find more affordable options in a region.", "The State of Illinois has the highest difference in total payments", "he State of Hawaii has the lowest difference in total payments" };
+        //    ViewBag.Data = String.Join(",", PaymentDifference.Select(d => d));
+        //    ViewBag.Labels = String.Join(",", State.Select(d => "\"" + d + "\""));
+        //    ViewBag.Label = "Average Payments";
 
-            return View("Visualization", Hosp);
-        }
+        //    return View("Visualization", s2);
+        //}
 
         //Update
         [HttpPost]

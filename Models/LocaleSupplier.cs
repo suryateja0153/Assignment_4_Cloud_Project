@@ -24,7 +24,7 @@ namespace Assignment_4_Cloud_Project.Models
     public class Supplier
     {
         [Key]
-        public int id { get; set; }
+        //public int id { get; set; }
         public string provider_id { get; set; }
         public string provider_name { get; set; }
         public string provider_street_address { get; set; }

@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "VaultUri"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ConnectionString/Assignment_4_Cloud_ProjectDBContext"
+    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "ConnectionString/Assignment_4_Cloud_ProjectDBContext"

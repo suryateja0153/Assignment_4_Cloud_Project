@@ -3,11 +3,12 @@
     ViewData["Title"] = "Intro";
 }
 
-<main>
-    <section class="index-banner-2">
-        <div class="vertical-center-2">
+<main style="padding-bottom: 120px; padding-top: 100px;">
+    <section class="index-banner-4">
+        <div class="vertical-center-4">
             <h4>Introduction</h4>@*<div class="section-title-2"></div>*@
-            <h2>Inpatient Prospective Payment System summary for the Top 100 Diagnoses-Related Groups.</h2>
+            <p>Inpatient Prospective Payment System summary for the Top 100 Diagnoses-Related Groups.</p>
+            <br />
             <p>1. Healthcare costs in the U.S. are among the highest in the world in all categories.</p>
             <p>
                 2. The data provided here is from data.cms.gov. It includes hospital-specific charges for the more than
@@ -18,11 +19,13 @@
             <p>3. Medicare is the national health insurance program in the United States.</p>
             <p>4. Navigate through the site to find: Average Total Payments by State and Difference.</p>
         </div>
+        <br /><br />
+        <div>
+            <a class="link" asp-controller="Home" asp-action="Update">Click here to save data to a local database</a>
+        </div>
+        <div>
+            <a class="link" asp-controller="Home" asp-action="EditData">Click here to Edit</a>
+        </div>
     </section>
-    <div class="wrapper-2">
-        <a class="link" asp-controller="Home" asp-action="Update">Click here to save data to a local database</a>
-    </div>
-    <div class="wrapper-2">
-        <a class="link" asp-controller="Home" asp-action="EditData">Click here to Edit</a>
-    </div>
+    
 </main>
