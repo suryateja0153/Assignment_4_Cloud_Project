@@ -8,7 +8,7 @@ using Assignment_4_Cloud_Project.Controllers;
 
 namespace Assignment_4_Cloud_Project.Models
 {
-    //public class MedData
+    //public class HospitalData
     //{
     //    public MedicalData data { get; set; }
     //}

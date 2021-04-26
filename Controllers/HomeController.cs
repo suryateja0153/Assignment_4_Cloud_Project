@@ -62,7 +62,7 @@ namespace Assignment_4_Cloud_Project.Controllers
         //    return View();
         //}
 
-        public IActionResult UpdateEntry()
+        public IActionResult EditData()
         {
             return View();
         }
@@ -105,41 +105,41 @@ namespace Assignment_4_Cloud_Project.Controllers
         }
 
         //Create 
-        //public async Task<ViewResult> Update()
-        //{
-        //    APIHandler webHandler = new APIHandler();
-        //    List<MedicalData> result = webHandler.GetMedDetails();
+        public async Task<ViewResult> Edit()
+        {
+            APIHandler webHandler = new APIHandler();
+            List<MedicalData> result = webHandler.GetMedDetails();
 
-        //    foreach (var item in result)
-        //    {
-        //        if (dbContext.MedicalData.Count() == 0)
-        //        {
-        //            dbContext.MedicalData.Add(item);
-        //        }
-        //    }
-        //    foreach (var item in dbContext.MedicalData)
-        //    {
-        //        Supplier supplier = new Supplier();
-        //        Locale locale = new Locale();
-        //        supplier.provider_id = item.provider_id;
-        //        supplier.provider_name = item.provider_name;
-        //        supplier.provider_street_address = item.provider_street_address;
-        //        supplier.provider_zip_code = item.provider_zip_code;
-        //        supplier.total_discharges = item.total_discharges;
-        //        supplier.drg_definition = item.drg_definition;
-        //        supplier.average_covered_charges = item.average_covered_charges;
-        //        supplier.average_medicare_payments = item.average_medicare_payments;
-        //        supplier.average_medicare_payments_2 = item.average_medicare_payments_2;
-        //        locale.provider_city = item.provider_city;
-        //        locale.provider_state = item.provider_state;
-        //        locale.hospital_referral_region_description = item.hospital_referral_region_description;
-        //        dbContext.Locales.Add(locale);
-        //        supplier.Locale = locale;
-        //        dbContext.Suppliers.Add(supplier);
-        //    }
-        //    await dbContext.SaveChangesAsync();
-        //    return View("Index", result);
-        //}
+            foreach (var item in result)
+            {
+                if (dbContext.MedicalDatas.Count() == 0)
+                {
+                    dbContext.MedicalDatas.Add(item);
+                }
+            }
+            foreach (var item in dbContext.MedicalDatas)
+            {
+                Supplier supplier = new Supplier();
+                Locale locale = new Locale();
+                supplier.provider_id = item.provider_id;
+                supplier.provider_name = item.provider_name;
+                supplier.provider_street_address = item.provider_street_address;
+                supplier.provider_zip_code = item.provider_zip_code;
+                supplier.total_discharges = item.total_discharges;
+                supplier.drg_definition = item.drg_definition;
+                supplier.average_covered_charges = item.average_covered_charges;
+                supplier.average_medicare_payments = item.average_medicare_payments;
+                supplier.average_medicare_payments_2 = item.average_medicare_payments_2;
+                locale.provider_city = item.provider_city;
+                locale.provider_state = item.provider_state;
+                locale.hospital_referral_region_description = item.hospital_referral_region_description;
+                dbContext.Locales.Add(locale);
+                supplier.Locale = locale;
+                dbContext.Suppliers.Add(supplier);
+            }
+            await dbContext.SaveChangesAsync();
+            return View("Index", result);
+        }
 
         //Read
         //public IActionResult Data(string searchProvState, string searchProvCity, string sortOrder)

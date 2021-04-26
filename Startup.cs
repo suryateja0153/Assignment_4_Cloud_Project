@@ -13,7 +13,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace Assignment_4_Cloud_Project
 {
     public class Startup
@@ -34,7 +33,7 @@ namespace Assignment_4_Cloud_Project
 
             services.AddControllersWithViews();
 
-            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=Medical;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=(localdb)\MSSQLLocalDB;Database=MedicalData;Trusted_Connection=True;ConnectRetryCount=0";
 
             services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>
             (options => options.UseSqlServer(connection));

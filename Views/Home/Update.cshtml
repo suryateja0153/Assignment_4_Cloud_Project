@@ -1,21 +1,22 @@
-﻿@model Assignment_4_Cloud_Project.Models.MedicalData
+﻿@*@model Assignment_4_Cloud_Project.Models.Supplier*@
+@model IEnumerable<Assignment_4_Cloud_Project.Models.Supplier>
 
 
 <h1>Data</h1>
 <hr />
 
-@*@foreach (var item in Model)
+@foreach (var item in Model)
 {
     <div>
         <h3>
             @Html.DisplayFor(modelItem => item.provider_name)
         </h3>
         <div>
-            @Html.DisplayFor(modelItem => item.drg_definition)
+            @Html.DisplayFor(modelItem => item.provider_street_address)
         </div>
-        @Html.DisplayFor(modelItem => item.provider_state)
+        @Html.DisplayFor(modelItem => item.provider_zip_code)
         <div>
-            @Html.DisplayFor(modelItem => item.provider_city)
+            @Html.DisplayFor(modelItem => item.total_discharges)
         </div>
     </div>
     <br />
@@ -23,4 +24,4 @@
 
 <script>
 alertDbSave(@ViewBag.dbSuccessComp);
-</script>*@
+</script>
