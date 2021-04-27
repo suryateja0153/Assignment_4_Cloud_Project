@@ -34,7 +34,6 @@ namespace Assignment_4_Cloud_Project
             services.AddControllersWithViews();
 
             var connection = @"Server=(localdb)\MSSQLLocalDB;Database=MedicalData;Trusted_Connection=True;ConnectRetryCount=0";
-            //var connection = @"Server=tcp:meddataserver.database.windows.net,1433;Initial Catalog=medicaldata;Persist Security Info=False;User ID=meddataserver;Password=meddata@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
             services.AddDbContext<Assignment_4_Cloud_ProjectDBContext>
             (options => options.UseSqlServer(connection));
