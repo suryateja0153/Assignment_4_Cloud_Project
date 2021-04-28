@@ -8,10 +8,6 @@ using Assignment_4_Cloud_Project.Controllers;
 
 namespace Assignment_4_Cloud_Project.Models
 {
-    //public class HospitalData
-    //{
-    //    public List<MedicalData> data { get; set; }
-    //}
     public class MedicalData
     {
         [Key]
